@@ -87,31 +87,15 @@ char *strcut(char *str, unsigned int beg, unsigned int end)
  */
 char *parse_line(char *line)
 {
-	unsigned int i, j;
-	char *token;
+	char *opcode;
+	char *push;
+	const char *delim;
 
-	i = 0;
-	token = malloc(sizeof(char *) * 2);
-	if (!token)
-		return (NULL);
+	delim = " ";
+	push = "push";
+	opcode = strtok(line, delim);
 
-	while (line[i])
-	{
-		if (line[i] == ' ')
-		{
-			i++;
-			continue;
-		}
-		else
-		{
-			j = 0;
-			while (line[i + j + 1] != ' ')
-				j++;
-			token = strcut(line, i, i + j);
-			return (token);
-		}
-		i++;
-
-	}
-	return (NULL);
+	if (strcmp(opcode, push) == 0)
+		push_arg = atoi(strtok(NULL, delim));
+	return (opcode);
 }
