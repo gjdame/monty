@@ -8,21 +8,20 @@ void read_file(char *filename)
 	char *buffer;
 	size_t i;
 	int check;
-	FILE *fp;
+	int read;
+	FILE *file = fopen(filename, "r");
 
-	fp = fopen(filename, 'r');
-	if(fd == NULL)
+	if(file == NULL)
 		exit(-1);
 
-	while ((read = getline(buffer, i, fp)) != -1)
+	while ((read = getline(&buffer, &i, file)) != -1)
 	{
-		printf("line of length %zu :\n", read);
 		//parse line function//
-		printf("%s", line);
+		;
 	}
 
-	check = fclose(fp);
-	if (close == -1)
+	check = fclose(file);
+	if (check == -1)
 		exit(-1);
 }
 /**
@@ -33,7 +32,7 @@ int get_op_func(char *str)
 {
 	int i;
 
-	instructions_t instruct[] = {
+	instruction_t instruct[] = {
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
@@ -52,6 +51,7 @@ int get_op_func(char *str)
 
 	return(instruct[i].f);
 }
+
 #include "monty.h"
 
 /**
