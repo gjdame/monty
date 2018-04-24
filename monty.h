@@ -3,6 +3,9 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+
+extern int  push_arg;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

@@ -52,3 +52,19 @@ int get_op_func(char *str)
 
 	return(instruct[i].f);
 }
+
+/**
+ *
+ *
+ */
+char *parse_line(char *line)
+{
+	char *op_code;
+
+	op_code = strtok(line, ' ');
+
+	if (op_code == "push")
+		push_arg = atoi(strtok(NULL, ' '));
+	return (op_code);
+
+}
