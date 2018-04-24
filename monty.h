@@ -37,4 +37,6 @@ typedef struct instruction_s
 } instruction_t;
 
 char *parse_line(char *line);
+
+void _push(stack_t **stack, unsigned int line_number);
 #endif
