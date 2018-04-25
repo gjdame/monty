@@ -25,6 +25,10 @@ void _push(stack_t **stack, unsigned int line_number)
 	new->prev = NULL;
 	*stack = new;
 }
+/**
+ *
+ *
+ */
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *runner;
@@ -36,10 +40,44 @@ void _pall(stack_t **stack, unsigned int line_number)
 		runner = runner->next;
 	}
 }
+/**
+ *
+ *
+ */
+void _pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *runner;
+	runner = *stack;
+	if (runner == NULL)
+	{
+		printf("%d: can't print, stack empty\n", line_number);
+		exit(-1);
+	}
+	printf("%d\n", runner->n);
+}
+/**
+ *
+ *
+ */
+void _swap(stack_t **stack, unsigned int line_number)
+{
+        stack_t *runner;
+	int tmp;
+
+        runner = *stack;
+        if (runner == NULL || runner->next == NULL)
+        {
+                printf("%d: can't swap, stack too short\n", line_number);
+                exit(-1);
+        }
+	tmp = runner->n;
+	runner->n = runner->next->n;
+	runner->next->n = tmp;
+}
 
 void _pop(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
-		return;
+		exit(-1);
 	delete_dnodeint_at_index(stack, 0);
 }
