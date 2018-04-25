@@ -57,7 +57,7 @@ void _div(stack_t **stack, unsigned int line_number)
 	}
 	if ((*stack)->n == 0)
 	{
-		printf("L%d: division by zero", line_number);
+		printf("L%d: division by zero\n", line_number);
 		error_exit(stack);
 	}
 	(*stack)->next->n /= (*stack)->n;
@@ -77,7 +77,7 @@ void _mod(stack_t **stack, unsigned int line_number)
 	}
 	if ((*stack)->n == 0)
         {
-                printf("L%d: division by zero", line_number);
+                printf("L%d: division by zero\n", line_number);
                 error_exit(stack);
         }
 	(*stack)->next->n %= (*stack)->n;
