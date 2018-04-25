@@ -36,12 +36,11 @@ void read_file(char *filename, stack_t **stack)
 		s(stack, line_count);
 		line_count++;
 	}
-
 	free(buffer);
 	check = fclose(file);
 	if (check == -1)
 		exit(-1);
-	exit(1);
+	return;
 }
 /**
  *
