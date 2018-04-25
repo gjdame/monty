@@ -9,7 +9,10 @@ void _push(stack_t **stack, unsigned int line_number)
 
 	new = malloc(sizeof(stack_t));
 	if (!new)
-		exit(-1);
+	{
+		printf("Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
 	if (*stack == NULL)
 	{
 		new->n = push_arg;
@@ -32,8 +35,8 @@ void _push(stack_t **stack, unsigned int line_number)
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *runner;
-	runner = *stack;
 
+	runner = *stack;
 	while (runner != NULL)
 	{
 		printf("%d\n", runner->n);
@@ -47,10 +50,11 @@ void _pall(stack_t **stack, unsigned int line_number)
 void _pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *runner;
+
 	runner = *stack;
 	if (runner == NULL)
 	{
-		printf("%d: can't print, stack empty\n", line_number);
+		printf("L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", runner->n);
@@ -67,7 +71,7 @@ void _swap(stack_t **stack, unsigned int line_number)
         runner = *stack;
         if (runner == NULL || runner->next == NULL)
         {
-                printf("%d: can't swap, stack too short\n", line_number);
+                printf("L%d: can't swap, stack too short\n", line_number);
                 exit(EXIT_FAILURE);
         }
 	tmp = runner->n;
@@ -78,6 +82,9 @@ void _swap(stack_t **stack, unsigned int line_number)
 void _pop(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
+	{
+		printf("L%d: can't pop an empty stack", line_number);
 		exit(EXIT_FAILURE);
+	}
 	delete_dnodeint_at_index(stack, 0);
 }
