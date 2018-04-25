@@ -36,4 +36,10 @@ void _pall(stack_t **stack, unsigned int line_number)
 		runner = runner->next;
 	}
 }
-	
+
+void _pop(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+		return;
+	delete_dnodeint_at_index(stack, 0);
+}
