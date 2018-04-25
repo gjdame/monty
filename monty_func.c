@@ -21,7 +21,7 @@ void read_file(char *filename, stack_t **stack)
 	while ((read = getline(&buffer, &i, file)) != -1)
 	{
 		line = parse_line(buffer);
-		if (line[0] == '#')
+		if (line == NULL || line[0] == '#')
 		{
 			line_count++;
 			continue;
@@ -83,6 +83,8 @@ char *parse_line(char *line)
 
 	push = "push";
 	op_code = strtok(line, "\n ");
+	if (op_code == NULL)
+		return (NULL);
 
 	if (strcmp(op_code, push) == 0)
 		push_arg = atoi(strtok(NULL, "\n "));
