@@ -80,10 +80,10 @@ void _swap(stack_t **stack, unsigned int line_number)
 }
 
 void _pop(stack_t **stack, unsigned int line_number)
-{
+
 	if (*stack == NULL)
 	{
-		printf("L%d: can't pop an empty stack", line_number);
+		printf("L%d: can't pop an empty stack\n", line_number);
 		error_exit(stack);
 	}
 	delete_dnodeint_at_index(stack, 0);
