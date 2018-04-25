@@ -17,11 +17,11 @@ void read_file(char *filename, stack_t **stack)
 	if(file == NULL)
 	{
 		printf("Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
+		error_exit(stack);
 	}
 	while ((read = getline(&buffer, &i, file)) != -1)
 	{
-		line = parse_line(buffer);
+		line = parse_line(buffer, stack, line_count);
 		if (line == NULL || line[0] == '#')
 		{
 			line_count++;
@@ -31,7 +31,7 @@ void read_file(char *filename, stack_t **stack)
 		if (s == NULL)
 		{
 			printf("L%d: unknown instruction %s\n", line_count, line);
-			exit(EXIT_FAILURE);
+			error_exit(stack);
 		}
 		s(stack, line_count);
 		line_count++;
@@ -74,16 +74,32 @@ instruct_func get_op_func(char *str)
 
 	return(instruct[i].f);
 }
+/**
+ *
+ *
+ */
+int isnumber(char *str)
+{
+	unsigned int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 #include "monty.h"
 
 /**
  *
  */
-char *parse_line(char *line)
+char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 {
-	char *op_code;
-	char *push;
+	char *op_code, *push, *arg;
 
 	push = "push";
 	op_code = strtok(line, "\n ");
@@ -91,6 +107,15 @@ char *parse_line(char *line)
 		return (NULL);
 
 	if (strcmp(op_code, push) == 0)
-		push_arg = atoi(strtok(NULL, "\n "));
+	{
+		arg = strtok(NULL, "\n ");
+		if (isnumber(arg))
+			push_arg = atoi(arg);
+		else
+		{
+			printf("L%dusage: push integer\n", line_number);
+			error_exit(stack);
+		}
+	}
 	return (op_code);
 }
