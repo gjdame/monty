@@ -3,12 +3,11 @@
  *
  *
  */
-void read_file(char *filename)
+void read_file(char *filename, stack_t **stack)
 {
-	char *buffer;
+	char *buffer = NULL;
 	char *line;
-	size_t i;
-	stack_t **stack;
+	size_t i = 0;
 	int line_count = 1;
 	instruct_func s;
 	int check;
@@ -21,7 +20,6 @@ void read_file(char *filename)
 	}
 	while ((read = getline(&buffer, &i, file)) != -1)
 	{
-		printf("%d\n", read);
 		line = parse_line(buffer);
 		s = get_op_func(line);
 		if (s == NULL)
@@ -66,47 +64,17 @@ instruct_func get_op_func(char *str)
 #include "monty.h"
 
 /**
- * strcut - copies a slice of a string
- * @str: string to copy slice from
- * @beg: index to start slice from
- * @end: index to end slice at
- *
- * Return: returns a malloced char pointer or NUll on failure
- */
-char *strcut(char *str, unsigned int beg, unsigned int end)
-{
-	unsigned int i, slice;
-	char *cut;
-
-	cut = malloc(sizeof(char) * (end - beg + 2));
-	if (!cut)
-		return (NULL);
-	i = 0;
-	slice = beg;
-	while (slice <= end)
-	{
-		cut[i] = str[slice];
-		slice++;
-		i++;
-	}
-	cut[i] = '\0';
-	return (cut);
-}
-
-/**
  *
  */
 char *parse_line(char *line)
 {
-	char *opcode;
+	char *op_code;
 	char *push;
-	const char *delim;
 
-	delim = " ";
 	push = "push";
-	opcode = strtok(line, delim);
+	op_code = strtok(line, "\n ");
 
-	if (strcmp(opcode, push) == 0)
-		push_arg = atoi(strtok(NULL, delim));
-	return (opcode);
+	if (strcmp(op_code, push) == 0)
+		push_arg = atoi(strtok(NULL, "\n "));
+	return (op_code);
 }

@@ -10,10 +10,19 @@ void _push(stack_t **stack, unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (!new)
 		exit(-1);
-	new->prev = NULL;
-	new->next = *stack;
-	new->n = push_arg;
+	if (*stack == NULL)
+	{
+		new->n = push_arg;
+		new->next = NULL;
+		new->prev = NULL;
+		*stack = new;
+		return;
+	}
+
 	(*stack)->prev = new;
+	new->n = push_arg;
+	new->next = *stack;
+	new->prev = NULL;
 	*stack = new;
 }
 void _pall(stack_t **stack, unsigned int line_number)
