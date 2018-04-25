@@ -12,7 +12,6 @@ void _add(stack_t **stack, unsigned int line_number)
 	}
 	(*stack)->next->n += (*stack)->n;
 	_pop(stack, line_number);
-	return;
 }
 
 /**
@@ -28,7 +27,6 @@ void _sub(stack_t **stack, unsigned int line_number)
 	}
 	(*stack)->next->n -= (*stack)->n;
 	_pop(stack, line_number);
-	return;
 }
 
 /**
@@ -44,7 +42,6 @@ void _mul(stack_t **stack, unsigned int line_number)
 	}
 	(*stack)->next->n *= (*stack)->n;
 	_pop(stack, line_number);
-	return;
 }
 
 /**
@@ -60,7 +57,6 @@ void _div(stack_t **stack, unsigned int line_number)
 	}
 	(*stack)->next->n /= (*stack)->n;
 	_pop(stack, line_number);
-	return;
 }
 
 /**
@@ -76,5 +72,4 @@ void _mod(stack_t **stack, unsigned int line_number)
 	}
 	(*stack)->next->n %= (*stack)->n;
 	_pop(stack, line_number);
-	return;
 }
