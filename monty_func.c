@@ -6,7 +6,11 @@
 void read_file(char *filename)
 {
 	char *buffer;
+	char *line;
 	size_t i;
+	stack_t **stack;
+	int line_count = 1;
+	instruct_func s;
 	int check;
 	int read;
 	FILE *file = fopen(filename, "r");
@@ -16,30 +20,35 @@ void read_file(char *filename)
 
 	while ((read = getline(&buffer, &i, file)) != -1)
 	{
-		//parse line function//
-		;
+		line = parse_line(buffer);
+		s = get_op_func(line);
+		if (s == NULL)
+			exit(-1);
+		s(stack, line_count);
+		line_count++;
 	}
 
 	check = fclose(file);
 	if (check == -1)
 		exit(-1);
+	exit(1);
 }
 /**
  *
  *
  */
-int get_op_func(char *str)
+instruct_func get_op_func(char *str)
 {
 	int i;
 
 	instruction_t instruct[] = {
 		{"push", _push},
-		{"pall", _pall},
+		/*{"pall", _pall},
 		{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},
-		{"nop", _nop},
+		{"nop", _nop},*/
 		{NULL, NULL},
 	};
 

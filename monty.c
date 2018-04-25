@@ -3,9 +3,9 @@
  *
  *
  */
-int main(ac, av)
+int main(int ac, char *av)
 {
-	if (av != 2)
+	if (ac != 2)
 	{
 		exit(-1);
 	}
