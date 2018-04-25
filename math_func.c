@@ -7,7 +7,7 @@ void _add(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		printf("L%d: can't sub, stack too short\n", line_number);
+		printf("L%d: can't add, stack too short\n", line_number);
 		error_exit(stack);
 	}
 	(*stack)->next->n += (*stack)->n;
