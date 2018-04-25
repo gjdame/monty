@@ -52,12 +52,13 @@ instruct_func get_op_func(char *str)
 		{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
+		{"pchar", _pchar},
 		{"add", _add},
 		{"sub", _sub},
 		{"mul", _mul},
 		{"div", _div},
 		{"mod", _mod},
-		/*{"nop", _nop},*/
+		{"nop", _nop},
 		{NULL, NULL},
 	};
 
