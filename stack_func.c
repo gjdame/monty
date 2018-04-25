@@ -51,7 +51,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 	if (runner == NULL)
 	{
 		printf("%d: can't print, stack empty\n", line_number);
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", runner->n);
 }
@@ -68,7 +68,7 @@ void _swap(stack_t **stack, unsigned int line_number)
         if (runner == NULL || runner->next == NULL)
         {
                 printf("%d: can't swap, stack too short\n", line_number);
-                exit(-1);
+                exit(EXIT_FAILURE);
         }
 	tmp = runner->n;
 	runner->n = runner->next->n;
@@ -78,6 +78,6 @@ void _swap(stack_t **stack, unsigned int line_number)
 void _pop(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
-		exit(-1);
+		exit(EXIT_FAILURE);
 	delete_dnodeint_at_index(stack, 0);
 }
