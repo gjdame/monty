@@ -16,3 +16,15 @@ void _push(stack_t **stack, unsigned int line_number)
 	(*stack)->prev = new;
 	*stack = new;
 }
+void _pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *runner;
+	runner = *stack;
+
+	while (runner != NULL)
+	{
+		printf("%d\n", runner->n);
+		runner = runner->next;
+	}
+}
+	

@@ -16,10 +16,12 @@ void read_file(char *filename)
 	FILE *file = fopen(filename, "r");
 
 	if(file == NULL)
+	{
 		exit(-1);
-
+	}
 	while ((read = getline(&buffer, &i, file)) != -1)
 	{
+		printf("%d\n", read);
 		line = parse_line(buffer);
 		s = get_op_func(line);
 		if (s == NULL)
@@ -43,8 +45,8 @@ instruct_func get_op_func(char *str)
 
 	instruction_t instruct[] = {
 		{"push", _push},
-		/*{"pall", _pall},
-		{"pint", _pint},
+		{"pall", _pall},
+		/*{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},

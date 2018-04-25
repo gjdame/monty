@@ -3,7 +3,9 @@
  *
  *
  */
-int main(int ac, char *av)
+int push_arg = 0;
+
+int main(int ac, char **av)
 {
 	if (ac != 2)
 	{

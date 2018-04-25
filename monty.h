@@ -39,5 +39,6 @@ typedef struct instruction_s
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 char *parse_line(char *line);
 instruct_func get_op_func(char *str);
+void _pall(stack_t **stack, unsigned int line_number);
 void _push(stack_t **stack, unsigned int line_number);
 #endif
