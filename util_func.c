@@ -22,6 +22,8 @@ void _rotl(stack_t **stack,__attribute__ ((unused))unsigned int line_number)
 	stack_t *runner;
 	int temp1, temp2;
 
+	if ((*stack)->next == NULL)
+		return;
 	runner = *stack;
 	while (runner->next)
 		runner = runner->next;
@@ -51,6 +53,9 @@ void _rotr(stack_t **stack,__attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *runner;
 	int temp1, temp2;
+
+	if ((*stack)->next == NULL)
+		return;
 
 	runner = *stack;
 	while (runner->next)
