@@ -82,6 +82,8 @@ int isnumber(char *str)
 {
 	unsigned int i;
 
+	if (str == NULL)
+		return(0);
 	i = 0;
 	while (str[i])
 	{
