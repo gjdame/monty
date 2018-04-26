@@ -87,6 +87,11 @@ int isnumber(char *str)
 	i = 0;
 	while (str[i])
 	{
+		if (str[0] == '-')
+		{
+			i++;
+			continue;
+		}
 		if (!isdigit(str[i]))
 			return (0);
 		i++;
@@ -112,7 +117,9 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 	{
 		arg = strtok(NULL, "\n ");
 		if (isnumber(arg) == 1 && arg != NULL)
+		{
 			push_arg = atoi(arg);
+		}
 		else
 		{
 			printf("L%d: usage: push integer\n", line_number);
