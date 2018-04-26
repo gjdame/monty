@@ -10,7 +10,7 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
-		printf("Error: malloc failed");
+		printf("Error: malloc failed\n");
 		error_exit(stack);
 	}
 	if (*stack == NULL)

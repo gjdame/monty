@@ -26,7 +26,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	runner = *stack;
 	val = runner->n;
 
-	if (val < 0 || val > 127)
+	if (!isprint(val))
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
 		error_exit(stack);
