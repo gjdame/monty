@@ -28,14 +28,6 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 		printf("L%d: usage: push integer\n", line_number);
 		error_exit(stack);
 	}
-	if (*stack == NULL)
-	{
-		new->n = push_arg;
-		new->next = NULL;
-		new->prev = NULL;
-		*stack = new;
-		return;
-	}
 
 	if (sq_flag == 1)
 	{
