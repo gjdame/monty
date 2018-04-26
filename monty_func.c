@@ -16,7 +16,7 @@ void read_file(char *filename, stack_t **stack)
 	int read;
 	FILE *file = fopen(filename, "r");
 
-	if(file == NULL)
+	if (file == NULL)
 	{
 		printf("Error: Can't open file %s\n", filename);
 		error_exit(stack);
@@ -42,7 +42,6 @@ void read_file(char *filename, stack_t **stack)
 	check = fclose(file);
 	if (check == -1)
 		exit(-1);
-	return;
 }
 /**
  * get_op_func -  checks opcode and returns the correct function
@@ -76,7 +75,7 @@ instruct_func get_op_func(char *str)
 		i++;
 	}
 
-	return(instruct[i].f);
+	return (instruct[i].f);
 }
 /**
  * isnumber - checks if a string is a number
