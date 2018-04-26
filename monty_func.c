@@ -83,7 +83,7 @@ int isnumber(char *str)
 	unsigned int i;
 
 	if (str == NULL)
-		return(0);
+		return (0);
 	i = 0;
 	while (str[i])
 	{
@@ -111,7 +111,7 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 	if (strcmp(op_code, push) == 0)
 	{
 		arg = strtok(NULL, "\n ");
-		if (isnumber(arg) || arg != NULL)
+		if (isnumber(arg) == 1 && arg != NULL)
 			push_arg = atoi(arg);
 		else
 		{
