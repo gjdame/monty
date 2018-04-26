@@ -44,14 +44,14 @@ void _pchar(stack_t **stack, unsigned int line_number)
  * @stack: linked list for stack
  * @line_number: line number opcode occurs on
  */
-void _pstr(stack_t **stack, unsigned int line_number)
+void _pstr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *runner;
 	int val;
 
 	runner = *stack;
 
-	while(runner != NULL)
+	while (runner != NULL)
 	{
 		val = runner->n;
 		if (val == 0)
