@@ -69,6 +69,8 @@ instruct_func get_op_func(char *str)
 		{"rotl", _rotl},
 		{"rotr", _rotr},
 		{"pstr", _pstr},
+		{"stack", _stack},
+		{"queue", _queue},
 		{NULL, NULL},
 	};
 
@@ -86,8 +88,6 @@ instruct_func get_op_func(char *str)
 /**
  * parse_line - parses a line for an opcode and arguments
  * @line: the line to be parsed
- * @stack: pointer to the head of the stack
- * @line_number: the current line number
  *
  * Return: returns the opcode or null on failure
  */

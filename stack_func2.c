@@ -65,3 +65,23 @@ void _pstr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 	}
 	putchar('\n');
 }
+/**
+ * _stack - sets sq_flag to stack
+ * @stack: pointer to stack list
+ * @line_number: line opcode occurs on
+ */
+void _stack(__attribute__ ((unused)) stack_t **stack,
+	    __attribute__ ((unused)) unsigned int line_number)
+{
+	sq_flag = 0;
+}
+/**
+ * _queue - sets sq_flag to queue
+ * @stack: pointer to stack list
+ * @line_number: line opcode occurs on
+ */
+void _queue(__attribute__ ((unused))stack_t **stack,
+	    __attribute__ ((unused))unsigned int line_number)
+{
+	sq_flag = 1;
+}

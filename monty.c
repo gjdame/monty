@@ -1,5 +1,5 @@
 #include "monty.h"
-int push_arg = 0;
+int sq_flag = 0;
 /**
  * main - driver function for monty program
  * @ac: int num of arguments

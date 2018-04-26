@@ -28,7 +28,6 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 		printf("L%d: usage: push integer\n", line_number);
 		error_exit(stack);
 	}
-
 	if (*stack == NULL)
 	{
 		new->n = push_arg;
@@ -38,11 +37,16 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 		return;
 	}
 
-	(*stack)->prev = new;
-	new->n = push_arg;
-	new->next = *stack;
-	new->prev = NULL;
-	*stack = new;
+	if (sq_flag == 1)
+	{
+		add_dnodeint_end(stack, push_arg);
+	}
+
+	if (sq_flag == 0)
+	{
+		add_dnodeint(stack, push_arg);
+	}
+
 }
 /**
  * _pall - print all function

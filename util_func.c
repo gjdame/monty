@@ -44,7 +44,7 @@ int isnumber(char *str)
  * @line_number: the index of the current line
  *
  */
-void _rotl(stack_t **stack,__attribute__ ((unused))unsigned int line_number)
+void _rotl(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *runner;
 	int temp1, temp2;
@@ -76,7 +76,7 @@ void _rotl(stack_t **stack,__attribute__ ((unused))unsigned int line_number)
  * @line_number: the index of the current line
  *
  */
-void _rotr(stack_t **stack,__attribute__ ((unused))unsigned int line_number)
+void _rotr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *runner1, *runner2;
 	int temp1, temp2;
