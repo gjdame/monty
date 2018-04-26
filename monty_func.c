@@ -66,6 +66,8 @@ instruct_func get_op_func(char *str)
 		{"div", _div},
 		{"mod", _mod},
 		{"nop", _nop},
+		{"rotl", _rotl},
+		{"rotr", _rotr},
 		{NULL, NULL},
 	};
 

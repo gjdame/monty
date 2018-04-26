@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <ctype.h>
 
+/*--- Struct Definitions ---*/
 extern int push_arg;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -53,6 +54,8 @@ void _sub(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
+void _rotl(stack_t **stack, unsigned int line_number);
+void _rotr(stack_t **stack, unsigned int line_number);
 void free_dlistint(stack_t *head);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void error_exit(stack_t **stack);
