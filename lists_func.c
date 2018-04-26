@@ -7,27 +7,27 @@
 */
 stack_t *add_dnodeint(stack_t **head, const int n)
 {
-        stack_t *new;
+	stack_t *new;
 
-        new = malloc(sizeof(stack_t));
-        if (new == NULL)
-                return (NULL);
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+		return (NULL);
 
-        if (*head == NULL)
-        {
-                new->n = n;
-                new->next = NULL;
-                new->prev = NULL;
-                *head = new;
-                return (*head);
-        }
+	if (*head == NULL)
+	{
+		new->n = n;
+		new->next = NULL;
+		new->prev = NULL;
+		*head = new;
+		return (*head);
+	}
 
-        (*head)->prev = new;
-        new->n = n;
-        new->next = *head;
-        new->prev = NULL;
-        *head = new;
-        return (*head);
+	(*head)->prev = new;
+	new->n = n;
+	new->next = *head;
+	new->prev = NULL;
+	*head = new;
+	return (*head);
 }
 /**
  * delete_dnodeint_at_index - delete node a specific spot

@@ -22,10 +22,10 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	int val;
 
 	if (*stack == NULL)
-        {
-                printf("L%d: can't pchar, stack empty\n", line_number);
+	{
+		printf("L%d: can't pchar, stack empty\n", line_number);
 		error_exit(stack);
-        }
+	}
 
 	runner = *stack;
 	val = runner->n;
