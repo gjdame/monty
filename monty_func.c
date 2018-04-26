@@ -113,7 +113,7 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 			push_arg = atoi(arg);
 		else
 		{
-			printf("L%dusage: push integer\n", line_number);
+			printf("L%d: usage: push integer\n", line_number);
 			error_exit(stack);
 		}
 	}
