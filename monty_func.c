@@ -23,7 +23,7 @@ void read_file(char *filename, stack_t **stack)
 	}
 	while ((read = getline(&buffer, &i, file)) != -1)
 	{
-		line = parse_line(buffer, stack, line_count);
+		line = parse_line(buffer);
 		if (line == NULL || line[0] == '#')
 		{
 			line_count++;
@@ -80,32 +80,6 @@ instruct_func get_op_func(char *str)
 
 	return (instruct[i].f);
 }
-/**
- * isnumber - checks if a string is a number
- * @str: string being passed
- *
- * Return: returns 1 if string is a number, 0 otherwise
- */
-int isnumber(char *str)
-{
-	unsigned int i;
-
-	if (str == NULL)
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		if (str[0] == '-')
-		{
-			i++;
-			continue;
-		}
-		if (!isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 #include "monty.h"
 
@@ -117,27 +91,12 @@ int isnumber(char *str)
  *
  * Return: returns the opcode or null on failure
  */
-char *parse_line(char *line, stack_t **stack, unsigned int line_number)
+char *parse_line(char *line)
 {
-	char *op_code, *push, *arg;
+	char *op_code;
 
-	push = "push";
 	op_code = strtok(line, "\n ");
 	if (op_code == NULL)
 		return (NULL);
-
-	if (strcmp(op_code, push) == 0)
-	{
-		arg = strtok(NULL, "\n ");
-		if (isnumber(arg) == 1 && arg != NULL)
-		{
-			push_arg = atoi(arg);
-		}
-		else
-		{
-			printf("L%d: usage: push integer\n", line_number);
-			error_exit(stack);
-		}
-	}
 	return (op_code);
 }

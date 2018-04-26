@@ -7,13 +7,28 @@
 void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 	stack_t *new;
+	char *arg;
+	int push_arg;
 
+	push_arg = 0;
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
 		printf("Error: malloc failed\n");
 		error_exit(stack);
 	}
+
+	arg = strtok(NULL, "\n ");
+	if (isnumber(arg) == 1 && arg != NULL)
+	{
+		push_arg = atoi(arg);
+	}
+	else
+	{
+		printf("L%d: usage: push integer\n", line_number);
+		error_exit(stack);
+	}
+
 	if (*stack == NULL)
 	{
 		new->n = push_arg;
