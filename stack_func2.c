@@ -58,7 +58,7 @@ void _pstr(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 			break;
 		if (!isprint(val))
 		{
-			error_exit(stack);
+			break;
 		}
 		putchar(val);
 		runner = runner->next;
