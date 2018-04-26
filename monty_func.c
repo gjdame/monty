@@ -109,11 +109,11 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 	if (strcmp(op_code, push) == 0)
 	{
 		arg = strtok(NULL, "\n ");
-		if (isnumber(arg))
+		if (isnumber(arg) || arg != NULL)
 			push_arg = atoi(arg);
 		else
 		{
-			printf("L%dusage: push integer\n", line_number);
+			printf("L%d: usage: push integer\n", line_number);
 			error_exit(stack);
 		}
 	}
