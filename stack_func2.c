@@ -39,3 +39,29 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	putchar(val);
 	putchar('\n');
 }
+/**
+ * _pstr - print string starting a top of stack
+ * @stack: linked list for stack
+ * @line_number: line number opcode occurs on
+ */
+void _pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *runner;
+	int val;
+
+	runner = *stack;
+
+	while(runner != NULL)
+	{
+		val = runner->n;
+		if (val == 0)
+			break;
+		if (!isprint(val))
+		{
+			error_exit(stack);
+		}
+		putchar(val);
+		runner = runner->next;
+	}
+	putchar('\n');
+}
